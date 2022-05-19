@@ -1,12 +1,15 @@
+//for the username inputs
 var userFormEl = document.querySelector('#user-form');
 var nameInputEl = document.querySelector('#username');
+
+//for the repos inside the username inputs
 var repoContainerEl = document.querySelector('#repos-container');
 var repoSearchTerm = document.querySelector('#repo-search-term');
 
 var formSubmitHandler = function(event) {
   // prevent page from refreshing
   event.preventDefault();
-
+  console.log(event);
   // get value from input element
   var username = nameInputEl.value.trim();
 
@@ -30,9 +33,9 @@ var getUserRepos = function(user) {
     .then(function(response) {
       // request was successful
       if (response.ok) {
-        console.log(response);
+       
         response.json().then(function(data) {
-          console.log(data);
+    
           displayRepos(data, user);
         });
       } else {
